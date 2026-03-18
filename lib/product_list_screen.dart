@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_cart/cart_provider.dart';
+import 'package:shopping_cart/cart_screen.dart';
 import 'package:shopping_cart/data.dart';
 
 class ProductListScreen extends StatelessWidget {
@@ -14,6 +15,7 @@ class ProductListScreen extends StatelessWidget {
         actions: [
           Padding(padding: EdgeInsets.all(10),
           child: IconButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>CartScreen()));
 
           }, icon: Icon(Icons.shopping_cart_checkout)),
           )
