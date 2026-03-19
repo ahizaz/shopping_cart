@@ -62,6 +62,28 @@ class CartItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+   return Dismissible(
+  key: ValueKey(id),
+  background: Container(
+    color: Colors.redAccent,
+    alignment: Alignment.centerRight,
+    padding: EdgeInsets.only(right: 20),
+    margin: EdgeInsets.symmetric(vertical: 4,horizontal: 15),
+    child: Icon(Icons.delete,color: Colors.white,size: 40,),
+  ),
+  direction: DismissDirection.endToStart,
+  onDismissed: (direction){
+    Provider.of<Cart>(context,listen: false).removeItem(productId);
+  },
+
+  child: Card(
+    margin: EdgeInsets.symmetric(vertical: 4, horizontal: 15),
+    child: ListTile(
+      title: Text(title),
+      subtitle: Text('Total: \$${(price * qunatity).toStringAsFixed(2)}'),
+      trailing: Text('$qunatity x'),
+    ),
+  ),
+);
   }
 }
